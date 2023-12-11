@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { en, es } from '../i18n'
+import { en, esp } from '../i18n'
 import App from './App'
 
 describe('Module 4 Project Tests', () => {
@@ -65,6 +65,58 @@ describe('Module 4 Project Tests', () => {
 
       This is done after making the UI multilingual.
     */
+      test(`TEXT_HEADING_CREATE_ACCOUNT is visible`, () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_HEADING_CREATE_ACCOUNT)).toBeVisible()
+      })
+      test('LABEL_USERNAME is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByLabelText(esp.LABEL_USERNAME)).toBeVisible()
+      })
+      test('PLACEHOLDER_USERNAME is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByPlaceholderText(esp.PLACEHOLDER_USERNAME)).toBeVisible()
+      })
+      test('TEXT_FAV_LANG is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_FAV_LANG)).toBeVisible()
+      })
+      test('TEXT_FAV_LANG_JS is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByLabelText(esp.TEXT_FAV_LANG_JS)).toBeVisible()
+      })
+      test('TEXT_FAV_LANG_RUST is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByLabelText(esp.TEXT_FAV_LANG_RUST)).toBeVisible()
+      })
+      test('LABEL_FAV_FOOD is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByLabelText(esp.LABEL_FAV_FOOD)).toBeVisible()
+      })
+      test('TEXT_OPT_FAV_FOOD_1 is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_1)).toBeVisible()
+      })
+      test('TEXT_OPT_FAV_FOOD_2 is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_2)).toBeVisible()
+      })
+      test('TEXT_OPT_FAV_FOOD_3 is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_3)).toBeVisible()
+      })
+      test('TEXT_OPT_FAV_FOOD_4 is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_4)).toBeVisible()
+      })
+      test('LABEL_ACCEPT_TERMS is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByLabelText(esp.LABEL_ACCEPT_TERMS)).toBeVisible()
+      })
+      test('TEXT_SUBMIT is visible', () => {
+        render(<App lang="esp" />)
+        expect(screen.getByText(esp.TEXT_SUBMIT)).toBeVisible()
+      })
   })
   describe('getEntriesByKeyPrefix', () => {
     test('can extract the correct data', () => {
