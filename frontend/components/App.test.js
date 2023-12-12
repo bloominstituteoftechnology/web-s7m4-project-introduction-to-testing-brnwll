@@ -120,54 +120,26 @@ describe('Module 4 Project Tests', () => {
   })
   describe('getEntriesByKeyPrefix', () => {
     test('can extract the correct data', () => {
-    /*
-      👉 TASK 4 part 2
-
-      Implement the function `getEntriesByKeyPrefix` below
-      and then come back here and write a few tests
-      to ensure it works as expected.
-
-      Although it should be noted that commonly,
-      the tests are written _before_ implementing
-      the function being tested.
-    */
+      const obj = {
+        abc_1: "data_abc_1",
+        abc_2: "data_abc_2",
+        xyz_1: "data_xyz_1",
+        abc_3: "data_abc_3",
+      }
+      expect(getEntriesByKeyPrefix(obj, 'abc')).toEqual([
+        ["abc_1", "data_abc_1"],
+        ["abc_2", "data_abc_2"],
+        ["abc_3", "data_abc_3"],
+      ])
+      expect(getEntriesByKeyPrefix(obj, 'xyz')).toEqual([
+        ["xyz_1", "data_xyz_1"]
+      ])
+      expect(getEntriesByKeyPrefix(obj, 'foo')).toEqual([])
     })
   })
 })
+
 function getEntriesByKeyPrefix(obj, keyPrefix) {
-  /*
-    👉 TASK 4 part 1
-
-    Implement a function that takes as first argument an object `obj` such as this:
-
-    {
-      abc_1: "data_abc_1",
-      abc_2: "data_abc_2",
-      xyz_1: "data_xyz_1",
-      abc_3: "data_abc_3",
-    }
-
-    and takes as second argument a string `keyPrefix` such as this: "abc"
-
-    and returns an array of arrays such as this (for the arguments given in the examples above):
-
-    [
-      ["abc_1", "data_abc_1"],
-      ["abc_2", "data_abc_2"],
-      ["abc_3", "data_abc_3"],
-    ]
-
-    If the function is passed the same `obj` as above but a `keyPrefix` of "xyz" then it would return:
-
-    [
-      ["xyz_1", "data_xyz_1"],
-    ]
-
-    If the function is passed the same `obj` as above but a `keyPrefix` of "foo" then it would return the empty array.
-
-    The function looks inside the object `obj`, finds all properties whose property names begin
-    with the `keyPrefix` given (followed by an underscore), and reorganizes the information before returning it.
-    The properties that match the `keyPrefix` are returned inside an array holding key-value-pair sub-arrays.
-
-  */
+  const hasPrefix = (str) => keyPrefix === str.split("_").at(0);
+  return Object.entries(obj).filter((entry) => hasPrefix(entry[0]));
 }
