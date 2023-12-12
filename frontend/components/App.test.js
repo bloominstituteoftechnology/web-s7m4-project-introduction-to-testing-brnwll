@@ -33,24 +33,22 @@ describe('Module 4 Project Tests', () => {
 })
 
 function testLanguage(language = 'en') {
-  describe('Spanish Language', () => {
-    test('TEXT elements are visible', () => {
-      render(<App lang={language} />)
-      getEntriesByKeyPrefix(language, 'TEXT').map(([key, val]) => {
-        expect(screen.getByText(val)).toBeVisible()
-      })
+  test('TEXT elements are visible', () => {
+    render(<App lang={language} />)
+    getEntriesByKeyPrefix(language, 'TEXT').map(([key, val]) => {
+      expect(screen.getByText(val)).toBeVisible()
     })
-    test('LABEL elements are visible', () => {
-      render(<App lang={language} />)
-      getEntriesByKeyPrefix(language, 'LABEL').map(([key, val]) => {
-        expect(screen.getByLabelText(val)).toBeVisible()
-      })
+  })
+  test('LABEL elements are visible', () => {
+    render(<App lang={language} />)
+    getEntriesByKeyPrefix(language, 'LABEL').map(([key, val]) => {
+      expect(screen.getByLabelText(val)).toBeVisible()
     })
-    test('PLACEHOLDER elements are visible', () => {
-      render(<App lang={language} />)
-      getEntriesByKeyPrefix(language, 'PLACEHOLDER').map(([key, val]) => {
-        expect(screen.getByPlaceholderText(val)).toBeVisible()
-      })
+  })
+  test('PLACEHOLDER elements are visible', () => {
+    render(<App lang={language} />)
+    getEntriesByKeyPrefix(language, 'PLACEHOLDER').map(([key, val]) => {
+      expect(screen.getByPlaceholderText(val)).toBeVisible()
     })
   })
 }
