@@ -6,41 +6,41 @@ import App from './App'
 
 describe('Module 4 Project Tests', () => {
   describe('English Language', () => {
-    test('TEXT elements are visible', () => {
-      render(<App lang="en" />)
-      getEntriesByKeyPrefix(en, 'TEXT').map(([key, val]) => {
+    getEntriesByKeyPrefix(en, 'TEXT').map(([key, val]) => {
+      test(`${key} is visible`, () => {
+        render(<App lang="en" />)
         expect(screen.getByText(val)).toBeVisible()
       })
     })
-    test('LABEL elements are visible', () => {
-      render(<App lang="en" />)
-      getEntriesByKeyPrefix(en, 'LABEL').map(([key, val]) => {
+    getEntriesByKeyPrefix(en, 'LABEL').map(([key, val]) => {
+      test(`${key} is visible`, () => {
+        render(<App lang="en" />)
         expect(screen.getByLabelText(val)).toBeVisible()
       })
     })
-    test('PLACEHOLDER elements are visible', () => {
-      render(<App lang="en" />)
-      getEntriesByKeyPrefix(en, 'PLACEHOLDER').map(([key, val]) => {
+    getEntriesByKeyPrefix(en, 'PLACEHOLDER').map(([key, val]) => {
+      test(`${key} is visible`, () => {
+        render(<App lang="en" />)
         expect(screen.getByPlaceholderText(val)).toBeVisible()
       })
     })
   })
   describe('Spanish Language', () => {
-    test('TEXT elements are visible', () => {
-      render(<App lang="esp" />)
-      getEntriesByKeyPrefix(esp, 'TEXT').map(([key, val]) => {
+    getEntriesByKeyPrefix(esp, 'TEXT').map(([key, val]) => {
+      test(`${key} is visible`, () => {
+        render(<App lang="esp" />)
         expect(screen.getByText(val)).toBeVisible()
       })
     })
-    test('LABEL elements are visible', () => {
-      render(<App lang="esp" />)
-      getEntriesByKeyPrefix(esp, 'LABEL').map(([key, val]) => {
+    getEntriesByKeyPrefix(esp, 'LABEL').map(([key, val]) => {
+      test(`${key} is visible`, () => {
+        render(<App lang="esp" />)
         expect(screen.getByLabelText(val)).toBeVisible()
       })
     })
-    test('PLACEHOLDER elements are visible', () => {
-      render(<App lang="esp" />)
-      getEntriesByKeyPrefix(esp, 'PLACEHOLDER').map(([key, val]) => {
+    getEntriesByKeyPrefix(esp, 'PLACEHOLDER').map(([key, val]) => {
+      test(`${key} is visible`, () => {
+        render(<App lang="esp" />)
         expect(screen.getByPlaceholderText(val)).toBeVisible()
       })
     })
