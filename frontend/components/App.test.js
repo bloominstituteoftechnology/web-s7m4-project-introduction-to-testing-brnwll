@@ -6,10 +6,44 @@ import App from './App'
 
 describe('Module 4 Project Tests', () => {
   describe('English Language', () => {
-    testLanguage('en')
+    test('TEXT elements are visible', () => {
+      render(<App lang="en" />)
+      getEntriesByKeyPrefix(en, 'TEXT').map(([key, val]) => {
+        expect(screen.getByText(val)).toBeVisible()
+      })
+    })
+    test('LABEL elements are visible', () => {
+      render(<App lang="en" />)
+      getEntriesByKeyPrefix(en, 'LABEL').map(([key, val]) => {
+        expect(screen.getByLabelText(val)).toBeVisible()
+      })
+    })
+    test('PLACEHOLDER elements are visible', () => {
+      render(<App lang="en" />)
+      getEntriesByKeyPrefix(en, 'PLACEHOLDER').map(([key, val]) => {
+        expect(screen.getByPlaceholderText(val)).toBeVisible()
+      })
+    })
   })
   describe('Spanish Language', () => {
-    testLanguage('esp')
+    test('TEXT elements are visible', () => {
+      render(<App lang="esp" />)
+      getEntriesByKeyPrefix(esp, 'TEXT').map(([key, val]) => {
+        expect(screen.getByText(val)).toBeVisible()
+      })
+    })
+    test('LABEL elements are visible', () => {
+      render(<App lang="esp" />)
+      getEntriesByKeyPrefix(esp, 'LABEL').map(([key, val]) => {
+        expect(screen.getByLabelText(val)).toBeVisible()
+      })
+    })
+    test('PLACEHOLDER elements are visible', () => {
+      render(<App lang="esp" />)
+      getEntriesByKeyPrefix(esp, 'PLACEHOLDER').map(([key, val]) => {
+        expect(screen.getByPlaceholderText(val)).toBeVisible()
+      })
+    })
   })
   describe('getEntriesByKeyPrefix', () => {
     test('can extract the correct data', () => {
@@ -31,27 +65,6 @@ describe('Module 4 Project Tests', () => {
     })
   })
 })
-
-function testLanguage(language = 'en') {
-  test('TEXT elements are visible', () => {
-    render(<App lang={language} />)
-    getEntriesByKeyPrefix(language, 'TEXT').map(([key, val]) => {
-      expect(screen.getByText(val)).toBeVisible()
-    })
-  })
-  test('LABEL elements are visible', () => {
-    render(<App lang={language} />)
-    getEntriesByKeyPrefix(language, 'LABEL').map(([key, val]) => {
-      expect(screen.getByLabelText(val)).toBeVisible()
-    })
-  })
-  test('PLACEHOLDER elements are visible', () => {
-    render(<App lang={language} />)
-    getEntriesByKeyPrefix(language, 'PLACEHOLDER').map(([key, val]) => {
-      expect(screen.getByPlaceholderText(val)).toBeVisible()
-    })
-  })
-}
 
 function getEntriesByKeyPrefix(obj, keyPrefix) {
   const hasPrefix = (str) => keyPrefix === str.split("_").at(0);
