@@ -6,117 +6,10 @@ import App from './App'
 
 describe('Module 4 Project Tests', () => {
   describe('English Language', () => {
-    test(`TEXT_HEADING_CREATE_ACCOUNT is visible`, () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_HEADING_CREATE_ACCOUNT)).toBeVisible()
-    })
-    test('LABEL_USERNAME is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByLabelText(en.LABEL_USERNAME)).toBeVisible()
-    })
-    test('PLACEHOLDER_USERNAME is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByPlaceholderText(en.PLACEHOLDER_USERNAME)).toBeVisible()
-    })
-    test('TEXT_FAV_LANG is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_FAV_LANG)).toBeVisible()
-    })
-    test('TEXT_FAV_LANG_JS is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByLabelText(en.TEXT_FAV_LANG_JS)).toBeVisible()
-    })
-    test('TEXT_FAV_LANG_RUST is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByLabelText(en.TEXT_FAV_LANG_RUST)).toBeVisible()
-    })
-    test('LABEL_FAV_FOOD is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByLabelText(en.LABEL_FAV_FOOD)).toBeVisible()
-    })
-    test('TEXT_OPT_FAV_FOOD_1 is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_OPT_FAV_FOOD_1)).toBeVisible()
-    })
-    test('TEXT_OPT_FAV_FOOD_2 is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_OPT_FAV_FOOD_2)).toBeVisible()
-    })
-    test('TEXT_OPT_FAV_FOOD_3 is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_OPT_FAV_FOOD_3)).toBeVisible()
-    })
-    test('TEXT_OPT_FAV_FOOD_4 is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_OPT_FAV_FOOD_4)).toBeVisible()
-    })
-    test('LABEL_ACCEPT_TERMS is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByLabelText(en.LABEL_ACCEPT_TERMS)).toBeVisible()
-    })
-    test('TEXT_SUBMIT is visible', () => {
-      render(<App lang="en" />)
-      expect(screen.getByText(en.TEXT_SUBMIT)).toBeVisible()
-    })
+    testLanguage('en')
   })
   describe('Spanish Language', () => {
-    /*
-      👉 TASK 3
-
-      This is done after making the UI multilingual.
-    */
-      test(`TEXT_HEADING_CREATE_ACCOUNT is visible`, () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_HEADING_CREATE_ACCOUNT)).toBeVisible()
-      })
-      test('LABEL_USERNAME is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByLabelText(esp.LABEL_USERNAME)).toBeVisible()
-      })
-      test('PLACEHOLDER_USERNAME is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByPlaceholderText(esp.PLACEHOLDER_USERNAME)).toBeVisible()
-      })
-      test('TEXT_FAV_LANG is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_FAV_LANG)).toBeVisible()
-      })
-      test('TEXT_FAV_LANG_JS is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByLabelText(esp.TEXT_FAV_LANG_JS)).toBeVisible()
-      })
-      test('TEXT_FAV_LANG_RUST is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByLabelText(esp.TEXT_FAV_LANG_RUST)).toBeVisible()
-      })
-      test('LABEL_FAV_FOOD is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByLabelText(esp.LABEL_FAV_FOOD)).toBeVisible()
-      })
-      test('TEXT_OPT_FAV_FOOD_1 is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_1)).toBeVisible()
-      })
-      test('TEXT_OPT_FAV_FOOD_2 is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_2)).toBeVisible()
-      })
-      test('TEXT_OPT_FAV_FOOD_3 is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_3)).toBeVisible()
-      })
-      test('TEXT_OPT_FAV_FOOD_4 is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_OPT_FAV_FOOD_4)).toBeVisible()
-      })
-      test('LABEL_ACCEPT_TERMS is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByLabelText(esp.LABEL_ACCEPT_TERMS)).toBeVisible()
-      })
-      test('TEXT_SUBMIT is visible', () => {
-        render(<App lang="esp" />)
-        expect(screen.getByText(esp.TEXT_SUBMIT)).toBeVisible()
-      })
+    testLanguage('esp')
   })
   describe('getEntriesByKeyPrefix', () => {
     test('can extract the correct data', () => {
@@ -138,6 +31,29 @@ describe('Module 4 Project Tests', () => {
     })
   })
 })
+
+function testLanguage(language = 'en') {
+  describe('Spanish Language', () => {
+    test('TEXT elements are visible', () => {
+      render(<App lang={language} />)
+      getEntriesByKeyPrefix(language, 'TEXT').map(([key, val]) => {
+        expect(screen.getByText(val)).toBeVisible()
+      })
+    })
+    test('LABEL elements are visible', () => {
+      render(<App lang={language} />)
+      getEntriesByKeyPrefix(language, 'LABEL').map(([key, val]) => {
+        expect(screen.getByLabelText(val)).toBeVisible()
+      })
+    })
+    test('PLACEHOLDER elements are visible', () => {
+      render(<App lang={language} />)
+      getEntriesByKeyPrefix(language, 'PLACEHOLDER').map(([key, val]) => {
+        expect(screen.getByPlaceholderText(val)).toBeVisible()
+      })
+    })
+  })
+}
 
 function getEntriesByKeyPrefix(obj, keyPrefix) {
   const hasPrefix = (str) => keyPrefix === str.split("_").at(0);
